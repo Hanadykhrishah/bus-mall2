@@ -91,6 +91,10 @@ function clickFunction ( event ) {
 
     if ( event.target.id === 'rightImage' ) {
       Images.all[rightIndex].click++;
+
+
+    } else if ( counter >= round ) {
+      renderChart ();
     }
 
     renderImages();
@@ -105,6 +109,7 @@ function printResult( e ) {
     li.textContent = `${Images.all[i].name} had ${Images.all[i].click} votes, and was seen ${Images.all[i].shown} times. `;
 
   }
+
 }
 viewResult.removeEventListener( 'click',printResult );
 
@@ -113,3 +118,36 @@ imageSection.addEventListener( 'click',clickFunction );
 viewResult.addEventListener( 'click',printResult );
 
 renderImages();
+
+
+function renderChart (){
+
+  let name  = [];
+  let veiw  = [];
+  let clicks  = [];
+  for ( let i = 0 ; i < Images.all.length; i++ ){
+    name .push( Images.all[i].name );
+    veiw .push( Images.all[i].shown );
+    clicks .push( Images.all[i].click );
+  }
+
+}
+
+let ctx = document.getElementById( 'myChart' ).getContext( '2d' );
+
+let myChart = new Chart( ctx, {
+
+  type: 'bar',
+  data: {
+    labels:imgArray  ,
+    datasets: [{
+      label: 'Views',
+      data:  listOfResults,
+      backgroundColor: 'rgba(0, 0, 255, 0.5)'
+    }, {
+      label: 'Clicks',
+      data: clickFunction,
+      backgroundColor: 'rgba(0, 0, 255, 0.2)'
+    }],
+  },
+} );
