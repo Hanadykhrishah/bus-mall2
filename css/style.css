@@ -1,46 +1,26 @@
 *{
 
     box-sizing: border-box;
+    background-color: plum;
     
     }
+
     body {
       width: 960px;
       margin: auto;
       font-family: 'Montserrat', sans-serif;
     }
     
-    #logo{
-        width: 100px;
-        height: 100px;
-    }
+   
+
     img {
         width: 250px;
         height: 350px;
     }
-    h1 {
-        color:red;
-    }
+  
+
+
     
-    p {
-        font-size: larger;
-        font-weight: bold;
-        color:red;
-        padding:30px;
-    }
-    
-    header nav a {
-        color:red;
-        text-decoration: none;
-        padding: 10px 20px;
-        transition: all 350ms;
-        position: relative;
-      
-      }
-    
-      header nav a:hover {
-        background: #ffd369;
-        color: #222;
-      }
     button {
         font-size: larger;
         background-color:pink ;
@@ -51,10 +31,23 @@
         background-color:purple;
         color:salmon(15, 88, 64) ;
     }
-    header {
-        background: #222;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-       }
+    
+
+    ul {
+        list-style: disc;
+    }
+    section {
+        margin-left: 100px;
+    }
+
+    #listOfResult{
+        color:purple;
+        text-align: left;
+        font-family: 'VT323', monospace;
+        font-size: 20px;
+        font-weight: 20;
+
+    }
+   
+
+   
