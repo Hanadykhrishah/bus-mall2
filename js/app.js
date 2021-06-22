@@ -182,3 +182,12 @@ function drowChart() {
   myChart.datasets;
 }
 
+function checkStorage () {
+
+  let stringifyImages = localStorage.getItem( 'setImages' );
+  Images.allImages = JSON.parse( stringifyImages );
+
+  render();
+
+}
+checkStorage();
