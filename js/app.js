@@ -45,11 +45,11 @@ let imgArray = [
 ];
 
 
-function Images( name, src ) {
+function Images( name, src , vote = 0, clicks = 0 ) {
   this.name = name;
   this.path = `./img/${src}`;
-  this.views = 0;
-  this.clicks = 0;
+  this.views = vote;
+  this.clicks = clicks;
   all.push( this );
 }
 
@@ -96,6 +96,7 @@ function eventHandler( e ) {
 
     if ( e.target.id === 'rightImage' ) {
       all[rightIndex].clicks++;
+
     }
     if ( e.target.id === 'leftImage' ) {
       all[leftIndex].clicks++;
@@ -110,7 +111,7 @@ function eventHandler( e ) {
   } else if ( counter >= rounds ) {
     drowChart();
   }
-
+  localStorage.setItem( 'data' , JSON.stringify( Images.all ) );
 }
 
 function printResult( e ) {
@@ -182,12 +183,21 @@ function drowChart() {
   myChart.datasets;
 }
 
-function checkStorage () {
+function checkStorage() {
 
-  let stringifyImages = localStorage.getItem( 'setImages' );
-  Images.allImages = JSON.parse( stringifyImages );
+  let data = JSON.parse( localStorage.getItem( 'data' ) );
+  if ( data ) {
+    Images.all = [];
+    for ( let i = 0 ; i < data.lenght; i++ ){
 
-  render();
+      new Images ( data[i].name, data[i].path, data[i].views,data[i].clicks );
+    }
+
+
+  }
+
+
 
 }
 checkStorage();
+render();
